@@ -5,5 +5,5 @@ import App from './App';
 
 render(
     <App />,
-    document.body
+    document.getElementById("root")
 );
