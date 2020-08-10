@@ -8,8 +8,6 @@ import logoSrc from './logo.png';
 // функциональный компонент
 export const Button = ({children, onClick}) => <button onClick={onClick}>{children}</button>
 
-const click = () => console.log('Hello!');
-
 const App = () => (
     <Fragment>
         <div className={style.message}>
