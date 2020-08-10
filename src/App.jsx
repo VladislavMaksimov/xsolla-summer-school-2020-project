@@ -5,14 +5,7 @@ import style from './styles.css';
 import logoSrc from './logo.png';
 
 // функциональный компонент
-const Button = () => <button> button </button>
-
-// объявление компонента с помощью класса
-class Button1 extends Component {
-    render() {
-        return <button> button </button>
-    }
-}
+const Button = (props) => <button> {props.text} </button>
 
 const App = () => (
     <Fragment>
@@ -20,8 +13,8 @@ const App = () => (
             <img className={style.logo} src={logoSrc} />
             Hello Xsolla school!
         </div>
-        <Button/>
-        <Button1/>
+        <Button text="Sign in"/>
+        <Button text="Sign up"/>
     </Fragment>
 )
 
