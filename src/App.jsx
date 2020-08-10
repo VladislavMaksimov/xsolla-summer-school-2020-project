@@ -1,21 +1,31 @@
-import React, {Component, Fragment} from 'react';
-import {Counter} from './Counter';
+import React from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import NavigationBar from './for-router-example/NavigationBar.jsx';
+import ItemList from './for-router-example/ItemList.jsx';
+import Item from './for-router-example/Item.jsx';
 
-import style from './styles.css';
+const About = () => <h2>About</h2>;
+const Home = () => <h2>Home</h2>;
 
-import logoSrc from './logo.png';
-
-// функциональный компонент
-export const Button = ({children, onClick}) => <button onClick={onClick}>{children}</button>
-
-const App = () => (
-    <Fragment>
-        <div className={style.message}>
-            <img className={style.logo} src={logoSrc} />
-            Hello Xsolla school!
-        </div>
-        <Counter/>
-    </Fragment> 
-)
-
+const App = () => {
+  return (
+    <BrowserRouter>
+      <NavigationBar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route exact path="/items">
+          <ItemList />
+        </Route>
+        <Route path="/items/:id">
+          <Item />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
+};
 export default App;
