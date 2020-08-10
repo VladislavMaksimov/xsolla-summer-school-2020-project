@@ -1,11 +1,12 @@
 import React, {Component, Fragment} from 'react';
+import {Counter} from './Counter';
 
 import style from './styles.css';
 
 import logoSrc from './logo.png';
 
 // функциональный компонент
-const Button = ({text = "Click me", children, onClick}) => <button onClick={onClick}>{text}{children}</button>
+export const Button = ({children, onClick}) => <button onClick={onClick}>{children}</button>
 
 const click = () => console.log('Hello!');
 
@@ -15,8 +16,7 @@ const App = () => (
             <img className={style.logo} src={logoSrc} />
             Hello Xsolla school!
         </div>
-        <Button text="Sign in" onClick={click}/>
-        <Button/>
+        <Counter/>
     </Fragment> 
 )
 
