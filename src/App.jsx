@@ -7,6 +7,11 @@ import logoSrc from './logo.png';
 // функциональный компонент
 const Button = (props) => <button> {props.text} </button>
 
+// свойства по умолчанию
+Button.defaultProps = {
+    text: "Click me"
+}
+
 const App = () => (
     <Fragment>
         <div className={style.message}>
@@ -15,6 +20,7 @@ const App = () => (
         </div>
         <Button text="Sign in"/>
         <Button text="Sign up"/>
+        <Button/>
     </Fragment>
 )
 
