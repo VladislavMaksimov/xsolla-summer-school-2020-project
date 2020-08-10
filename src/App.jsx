@@ -1,19 +1,28 @@
-import React from 'react';
+import React, {Component, Fragment} from 'react';
 
 import style from './styles.css';
 
 import logoSrc from './logo.png';
 
-const flag = false;
+// функциональный компонент
+const Button = () => <button> button </button>
+
+// объявление компонента с помощью класса
+class Button1 extends Component {
+    render() {
+        return <button> button </button>
+    }
+}
 
 const App = () => (
-    <div className={style.message}>
-        <img className={style.logo} src={logoSrc} />
-        Hello Xsolla school!
-        {console.dir("hello world!")}
-        {flag && <h2>Xsolla</h2>}
-        {alert(123)}
-    </div>
+    <Fragment>
+        <div className={style.message}>
+            <img className={style.logo} src={logoSrc} />
+            Hello Xsolla school!
+        </div>
+        <Button/>
+        <Button1/>
+    </Fragment>
 )
 
 export default App;
