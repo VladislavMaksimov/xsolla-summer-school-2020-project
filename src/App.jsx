@@ -5,12 +5,7 @@ import style from './styles.css';
 import logoSrc from './logo.png';
 
 // функциональный компонент
-const Button = (props) => <button> {props.text} </button>
-
-// свойства по умолчанию
-Button.defaultProps = {
-    text: "Click me"
-}
+const Button = ({text = "Click me"}) => <button> {text} </button>
 
 const App = () => (
     <Fragment>
