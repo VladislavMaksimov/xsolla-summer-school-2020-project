@@ -5,8 +5,9 @@ import style from './styles.css';
 import logoSrc from './logo.png';
 
 // функциональный компонент
-const Button = ({text = "Click me", children}) => <button> {text}{children} </button>
-const FadeText = ({text}) => <div>{text}</div>
+const Button = ({text = "Click me", children, onClick}) => <button onClick={onClick}>{text}{children}</button>
+
+const click = () => console.log('Hello!');
 
 const App = () => (
     <Fragment>
@@ -14,8 +15,7 @@ const App = () => (
             <img className={style.logo} src={logoSrc} />
             Hello Xsolla school!
         </div>
-        <Button text="Sign in">123</Button>
-        <Button text="Sign up"><FadeText text="123"/></Button>
+        <Button text="Sign in" onClick={click}/>
         <Button/>
     </Fragment> 
 )
