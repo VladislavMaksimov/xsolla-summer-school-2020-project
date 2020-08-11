@@ -30,7 +30,7 @@ module.exports = (env, argv) => ({
                 use: 'file-loader'
             },
             {
-                test: /\.css$/i,
+                test: /\.(s*)css$/i,
                 use: 
                 [
                     MiniCssPlugin.loader, 
@@ -40,7 +40,8 @@ module.exports = (env, argv) => ({
                             modules: true
                         }
                     },
-                    'postcss-loader'
+                    'postcss-loader',
+                    'sass-loader'
                 ]
             }
         ]

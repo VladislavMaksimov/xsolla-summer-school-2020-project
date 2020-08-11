@@ -1,0 +1,21 @@
+$size: 2em;
+$color: red;
+$background: rgb(255, 230, 0);
+$rotate: 360deg;
+$time: 3s;
+$trans: 25vw;
+$width: 300px;
+
+.app {
+    width: $width;
+    font-family: sans-serif;
+    text-align: center;
+    background-color: $background;
+    color: $color;
+    font-size: $size;
+    transition: $time;
+}
+
+.app:hover {
+    transform: rotate($rotate) translateX($trans) translateY($trans);
+}
