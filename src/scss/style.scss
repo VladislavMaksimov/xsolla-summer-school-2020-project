@@ -4,9 +4,13 @@ $background: rgb(255, 230, 0);
 $rotate: 360deg;
 $time: 3s;
 $trans: 25vw;
-$width: 300px;
+$width: 240px;
 
 .app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
     width: $width;
     font-family: sans-serif;
     text-align: center;
