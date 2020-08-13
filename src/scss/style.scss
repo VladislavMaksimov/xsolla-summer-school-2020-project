@@ -1,25 +1,55 @@
-$size: 2em;
-$color: red;
-$background: rgb(255, 230, 0);
-$rotate: 360deg;
-$time: 3s;
-$trans: 25vw;
-$width: 240px;
+/*** Дефолтные значение ***/
 
-.app {
+/* Фон */
+$bg-default: rgb(223, 239, 242);
+/* Шрифт */
+$font-default: Arial, Helvetica, sans-serif;
+/* Тень */
+$shadow-default: 0 0 3vh grey;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div, body, p {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-default; 
+    color: black;
+    background-color: $bg-default;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Миксин для центрирования отступами */
+@mixin center-auto() {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Миксин для центрирования флексом */
+@mixin center-flex() {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100px;
-    width: $width;
-    font-family: sans-serif;
-    text-align: center;
-    background-color: $background;
-    color: $color;
-    font-size: $size;
-    transition: $time;
+    justify-content: center;
 }
 
-.app:hover {
-    transform: rotate($rotate) translateX($trans) translateY($trans);
+$page-width: 45%;
+
+/* блок, в котором находятся все остальные элементы */
+.page {
+    width: $page-width;
+    padding: 2%;
+    background-color: white;
+    @include center-auto();
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-radius: 0.5vh;
+    box-shadow: $shadow-default;
 }
+
