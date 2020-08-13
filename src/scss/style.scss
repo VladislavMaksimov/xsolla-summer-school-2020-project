@@ -53,3 +53,93 @@ $page-width: 45%;
     box-shadow: $shadow-default;
 }
 
+/* грид с карточками */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    width: 100%;
+    margin-top: 3%;
+}
+
+$margin-card-elem: 8%;
+
+/* карточка */
+.card {
+    background-size: cover;
+    border-radius: 0.7vh;
+    box-shadow: $shadow-default;
+    position: relative;
+    background-color: black;
+    width: 200px;
+    height: 200px;  
+
+    /* виды карточек */
+    &_top_left {
+        margin-right: 3%;
+        height: 15vw;
+    }
+
+    &_top_right {
+        margin-left: 3%;
+    }
+
+    &_left {
+        margin-right: 3%;
+        margin-top: 6%;
+    }
+
+    &_right {
+        margin-left: 3%;
+        margin-top: 6%;
+    }
+
+    /* закладка */
+    &_white_bookmark {
+        color: white;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: $margin-card-elem;
+        margin-right: $margin-card-elem;
+        font-size: 1.2vw;
+    }
+
+    /* текст в карточке */
+    &_bottom_text {
+        position: absolute;
+        bottom: 0;
+        color: white;
+        margin-bottom: $margin-card-elem;
+        margin-left: $margin-card-elem;
+        font-size: 1.5vw;
+    }
+}
+
+$day-margin: 8%;
+
+/* блок дня мероприятия */
+.day {
+    position: relative;
+    border: solid thin;
+    border-color: white;
+    border-radius: 0.5vh;
+    height: 2.7vw;
+    width: 2.7vw;
+    color: white;
+    top: $day-margin;
+    left: $day-margin;
+    @include center-flex();
+
+    /* блок дня при наведении мыши */
+    &:hover {
+        background-color: rgba(172, 174, 176, 0.7);
+    }
+
+    /* день мероприятия */
+    &_text {
+        position: absolute;
+        font-size: 1.9vw;
+        cursor: default;
+    }
+}
