@@ -1,10 +1,8 @@
 import React from 'react'
+import { NavLink } from "react-router-dom"
 
 import { card, day, day_text, card_bottom_text } from '../scss/style.scss'
-
 import no_photo from "../../assets/no_image.png"
-
-import { NavLink } from "react-router-dom"
 
 // Карточка
 export const Card = ({source = no_photo}) => {
