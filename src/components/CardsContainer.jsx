@@ -12,17 +12,19 @@ export const CardsContainer = () => {
 
     useEffect(() => {
         fetch(path)
-          .then(response => {getCards(response.json())});
-    }, [path])
+            .then(response => response.json())
+            .then(response => getCards(response))
+        }, [path]);
 
     return(
+        typeof cardsCollection === undefined ? "loading" :
         <div className={cards}>
-        {
-            Object.keys(cardsCollection).map((key) =>{
-                const card = cardsCollection[key];
-                <Card info={card} source={card.image}/>
-            })
-        }
+            {
+                Object.keys(cardsCollection).map((key) =>{ 
+                    const card = cardsCollection[key];
+                    return(<Card source={card.image}/>);
+                })
+            }
         </div>
     )
 }
