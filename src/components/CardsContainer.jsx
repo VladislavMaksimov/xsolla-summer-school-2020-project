@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { cards } from '../scss/style.scss'
 
@@ -22,7 +22,7 @@ export const CardsContainer = () => {
             {
                 Object.keys(cardsCollection).map((key) =>{ 
                     const card = cardsCollection[key];
-                    return(<Card source={card.image}/>);
+                    return(<Card info={card} source={card.image}/>);
                 })
             }
         </div>
