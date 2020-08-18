@@ -23,8 +23,8 @@ export const Card = ({info, source = no_photo}) => {
 
     return (
         <InfoContext.Consumer>
-            {() => (
-                <NavLink exact to="/test">
+            {({card_info, setInfo}) => (
+                <NavLink exact to="/test" onClick={setInfo(info)}>
                 <div className={card, second_class} style={{ backgroundImage:`url(${source})` }}>
                         {/* Квадрат с днём */}
                         <div className={day}>

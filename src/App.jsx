@@ -1,5 +1,5 @@
 import { hot } from 'react-hot-loader/root'
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import { Page } from './components/Page'
@@ -7,8 +7,10 @@ import { CardInformation } from './components/CardInformation'
 import { InfoContext } from './context/InfoContext'
 
 const App = () => {
+  const [card_info, setInfo] = useState({});
+
   return (
-    <InfoContext.Provider value = "Srry, no info">
+    <InfoContext.Provider value = { {card_info, setInfo} }>
       <BrowserRouter>
         <Switch>
           <Route exact path="/">

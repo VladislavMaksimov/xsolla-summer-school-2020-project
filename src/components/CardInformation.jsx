@@ -7,7 +7,7 @@ export const CardInformation = () => {
         <InfoContext.Consumer>
             {(value) => (
                 <div>
-                    {value} <br/>
+                    {console.dir(value.card_info)} <br/>
                     <NavLink exact to="/">
                         Назад
                     </NavLink>
