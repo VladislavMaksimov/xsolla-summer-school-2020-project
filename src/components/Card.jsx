@@ -10,11 +10,11 @@ export const Card = ({info, source = no_photo}) => {
     const [second_class, getClassName] = useState("");
 
     useEffect(() => {
-        const id = Number(card.id);
+        const id = Number(info.id);
         if (id === 1)
-            getClassName(card_top_left)
+            getClassName(card_left)
         else if (id === 2)
-            getClassName(card_top_right)
+            getClassName(card_right)
         else if (id % 2 === 0)
             getClassName(card_right)
         else 
@@ -24,16 +24,16 @@ export const Card = ({info, source = no_photo}) => {
     return (
         <InfoContext.Consumer>
             {({card_info, setInfo}) => (
-                <NavLink exact to="/test">
-                <div className={card, second_class} style={{ backgroundImage:`url(${source})` }} onClick={() => { setInfo(info) }}>
+                <NavLink exact to="/test" className={card + ' ' + second_class} style={{ backgroundImage:`url(${source})` }} 
+                onClick={() => { setInfo(info) }}>
+
                         {/* Квадрат с днём */}
                         <div className={day}>
                             <p className={day_text}/>
                         </div>
 
                         {/* Название мероприятия */}
-                        <h2 className="card_bottom_text"/>
-                </div>
+                        <h2 className={card_bottom_text}> TEST </h2>
             </NavLink>
             )} 
         </InfoContext.Consumer>
