@@ -5,7 +5,7 @@ import { CardsContainer } from './CardsContainer'
 export const Page = () => {
   return (
     <div className={page}>
-      <h1> Event Listing </h1>
+      <h2> Event Listing </h2>
       <CardsContainer/>
     </div>
   )

@@ -23,19 +23,22 @@ export const Card = ({info, source = no_photo}) => {
 
     return (
         <InfoContext.Consumer>
-            {({card_info, setInfo}) => (
-                <NavLink exact to="/test" className={card + ' ' + second_class} style={{ backgroundImage:`url(${source})` }} 
-                onClick={() => { setInfo(info) }}>
+            {
+                ({card_info, setInfo}) => (
+                    <NavLink exact to="/test" className={card + ' ' + second_class} 
+                        style={{ backgroundImage:`url(${source})` }} onClick={() => { setInfo(info) }}>
 
-                        {/* Квадрат с днём */}
-                        <div className={day}>
-                            <p className={day_text}/>
-                        </div>
+                            {/* Квадрат с днём */}
+                            <div className={day}>
+                                <p className={day_text}> { info.date.split('.')[0] } </p>
+                            </div>
 
-                        {/* Название мероприятия */}
-                        <h2 className={card_bottom_text}> TEST </h2>
-            </NavLink>
-            )} 
+                            {/* Название мероприятия */}
+                            <h2 className={card_bottom_text}> { info.name } </h2>
+                            
+                    </NavLink>
+                )
+            } 
         </InfoContext.Consumer>
     )
 }
