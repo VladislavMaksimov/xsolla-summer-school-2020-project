@@ -6,7 +6,8 @@ import { info_page, info_card, info_card_img, info_card_text } from "../scss/sty
 export const CardInformation = () => {
     return (
         <InfoContext.Consumer>
-            {({card_info, setInfo}) => (
+            {({card_info, setInfo}) =>
+                (
                 <div className = { info_page }>
                     <div className = { info_card }>
 
@@ -23,7 +24,7 @@ export const CardInformation = () => {
                             City: { card_info.city } <br/> <br/>
                             Genre: { card_info.genre }
                         </span>
-                        
+
                         <NavLink exact to="/">
                             Назад
                         </NavLink>
