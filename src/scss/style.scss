@@ -133,3 +133,48 @@ $day-margin: 8%;
         font-size: 1.9vw;
     }
 }
+
+.info_page {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include center-flex();
+    
+    .info_card {
+        position: relative;
+        width: 25%;
+        height: 70%;
+        background-color: white;
+        border-radius: 0.5vh;
+
+        &_img {
+            width: 100%;
+            height: 60%;
+            background-size: contain;
+            @include center-flex();
+
+            img {
+                max-width: 80%;
+                border-radius: 0.5vh;
+            }
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        &_text {
+            display: inline-block;
+            margin-left: 10%;
+        }
+
+        a {
+            display: inline-block;
+            position: absolute;
+            bottom: 0.5vw;
+            right: 0.5vw;
+        }
+    }
+}
