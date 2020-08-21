@@ -13,9 +13,9 @@ export const CardInformation = () => {
             {
                 // фильтруем json по id
                 const cardsJson = { array: cardsInfo }
-                const cardInfo = Object.values(cardsJson.array).filter((card) => card.id === id)
+                const cardInfo = Object.values(cardsJson.array).filter((card) => card.id === id)[0]
                 
-                (
+                return (
                 <div className = { info_page }>
                     <div className = { info_card }>
 
