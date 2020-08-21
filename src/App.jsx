@@ -1,6 +1,6 @@
 import { hot } from 'react-hot-loader/root'
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, HashRouter } from 'react-router-dom'
 
 import { Page } from './components/Page'
 import { CardInformation } from './components/CardInformation'
@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <InfoContext.Provider value = { cardsInfo }>
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route exact path="/">
             <Page/>
@@ -29,7 +29,7 @@ const App = () => {
             <CardInformation/>
           </Route>
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </InfoContext.Provider>
   )
 }

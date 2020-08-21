@@ -47,7 +47,7 @@ module.exports = (env, argv) => ({
         ]
     },
     devServer: {
-        historyApiFallback: true,
+        historyApiFallback: {index: '/'},
         port: 9000,
         contentBase: path.join(__dirname, 'dist'),
         hot: true
