@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route, HashRouter } from 'react-router-dom'
 
 import { Page } from './components/Page'
 import { CardInformation } from './components/CardInformation'
-import { InfoContext } from './context/InfoContext'
+import { InfoProvider } from './context/InfoContext'
 
 const path = "https://raw.githubusercontent.com/xsolla/xsolla-frontend-school-2020/master/events.json";
 
@@ -19,7 +19,7 @@ const App = () => {
     }, [path]);
 
   return (
-    <InfoContext.Provider value = { cardsInfo }>
+    <InfoProvider info = { cardsInfo }>
       <HashRouter>
         <Switch>
           <Route exact path="/">
@@ -30,7 +30,7 @@ const App = () => {
           </Route>
         </Switch>
       </HashRouter>
-    </InfoContext.Provider>
+    </InfoProvider>
   )
 }
 
