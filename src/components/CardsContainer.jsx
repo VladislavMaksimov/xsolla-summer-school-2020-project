@@ -11,24 +11,28 @@ const path = "https://raw.githubusercontent.com/xsolla/xsolla-frontend-school-20
 // Контейнер с карточками
 export const CardsContainer = () => {
 
+    const [cardsInfo, setInfo] = useState({});
+
+    // Получаем данные из json-файла
+    useEffect(() => {
+    fetch(path)
+        .then(response => response.json())
+        .then(response => setInfo(response))
+    }, [path]);
+
     return(
-        typeof cardsCollection === undefined ? "loading" :
-        <InfoContext.Consumer>
-        {(cardsInfo) => (
-            <div className={cards}>
-                {
-                    // Добавляем карточки
+        <div className={cards}>
+            {
+                // Добавляем карточки
                     Object.keys(cardsInfo).map((key) =>{ 
                         const card = cardsInfo[key];
                         return(
                         <NavLink exact to={`/card_info/${card.id}`}>
                             <Card info={card} source={card.image}/>
                         </NavLink>
-                        );
-                    })
-                }
-            </div>
-        )}
-        </InfoContext.Consumer>
+                    );
+                })
+            }
+        </div>
     )
 }
