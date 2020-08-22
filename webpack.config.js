@@ -6,7 +6,8 @@ module.exports = (env, argv) => ({
     entry: './src/index.jsx',
     output: {
         filename: 'main.js',
-        path: path.join(__dirname, 'dist')
+        path: path.join(__dirname, 'dist'),
+        publicPath: '/'
     },
     devtool: argv.mode === "production" ? 'hidden-source-map' : 'source-map',
     resolve: {
