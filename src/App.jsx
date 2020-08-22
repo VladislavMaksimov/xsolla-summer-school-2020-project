@@ -7,14 +7,14 @@ import { InfoRoutes } from './components/InfoRoutes'
 
 const App = () => {
   return (
-      <HashRouter>
-        <Switch>
-          <Route exact path="/">
-            <Page/>
-          </Route>
-          <InfoRoutes/>
-        </Switch>
-      </HashRouter>
+    <HashRouter>
+      <Switch>
+        <Route exact path="/">
+          <Page/>
+        </Route>
+        <InfoRoutes/>
+      </Switch>
+    </HashRouter>
   )
 }
 

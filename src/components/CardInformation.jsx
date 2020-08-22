@@ -1,35 +1,34 @@
 import React from 'react'
-import { NavLink } from "react-router-dom"
-import { info_page, info_card, info_card_img, info_card_text } from "../scss/style.scss"
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
+import { info_page, info_card, info_card_img, info_card_text } from '../scss/style.scss'
 
-export const CardInformation = ({name, city, date, genre, image}) => {
-    const {id} = useParams();
+export const CardInformation = ({ name, city, date, genre, image }) => {
+  const { id } = useParams()
 
-    return (
-            
-                <div className = { info_page }>
-                    <div className = { info_card }>
+  return (
 
-                        <div className = { info_card_img }>
-                            <img src = { image }/>
-                        </div>
+    <div className = { info_page }>
+      <div className = { info_card }>
 
-                        <h3> { name } </h3>
+        <div className = { info_card_img }>
+          <img src = { image }/>
+        </div>
 
-                        <br/>
+        <h3> { name } </h3>
 
-                        <span className = { info_card_text }>
+        <br/>
+
+        <span className = { info_card_text }>
                             Date: { date } <br/> <br/>
                             City: { city } <br/> <br/>
                             Genre: { genre }
-                        </span>
+        </span>
 
-                        <NavLink exact to="/">
+        <NavLink exact to="/">
                             Назад
-                        </NavLink>
+        </NavLink>
 
-                    </div>
-                </div>
-    )
+      </div>
+    </div>
+  )
 }
