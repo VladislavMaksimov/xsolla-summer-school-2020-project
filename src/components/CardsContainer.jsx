@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { cards } from '../scss/style.scss'
 
 import { Card } from './Card'
-import { InfoContext } from "../context/InfoContext"
 import { NavLink } from "react-router-dom"
 
 const path = "https://raw.githubusercontent.com/xsolla/xsolla-frontend-school-2020/master/events.json";

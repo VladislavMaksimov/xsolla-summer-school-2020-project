@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from "react-router-dom"
-import { InfoContext } from "../context/InfoContext"
 import { info_page, info_card, info_card_img, info_card_text } from "../scss/style.scss"
 import { useParams } from 'react-router-dom'
 
