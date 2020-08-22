@@ -4,33 +4,26 @@ import { InfoContext } from "../context/InfoContext"
 import { info_page, info_card, info_card_img, info_card_text } from "../scss/style.scss"
 import { useParams } from 'react-router-dom'
 
-export const CardInformation = () => {
+export const CardInformation = ({name, city, date, genre, image}) => {
     const {id} = useParams();
 
     return (
-        <InfoContext.Consumer>
-            {(cardsInfo) =>
-            {
-                // фильтруем json по id
-                const cardsJson = { array: cardsInfo }
-                const cardInfo = Object.values(cardsJson.array).filter((card) => card.id === id)[0]
-                
-                return (
+            
                 <div className = { info_page }>
                     <div className = { info_card }>
 
                         <div className = { info_card_img }>
-                            <img src = { cardInfo.image }/>
+                            <img src = { image }/>
                         </div>
 
-                        <h3> { cardInfo.name } </h3>
+                        <h3> { name } </h3>
 
                         <br/>
 
                         <span className = { info_card_text }>
-                            Date: { cardInfo.date } <br/> <br/>
-                            City: { cardInfo.city } <br/> <br/>
-                            Genre: { cardInfo.genre }
+                            Date: { date } <br/> <br/>
+                            City: { city } <br/> <br/>
+                            Genre: { genre }
                         </span>
 
                         <NavLink exact to="/">
@@ -39,7 +32,5 @@ export const CardInformation = () => {
 
                     </div>
                 </div>
-            )}}
-        </InfoContext.Consumer>
     )
 }

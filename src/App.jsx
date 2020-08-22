@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Switch, Route, HashRouter } from 'react-router-dom'
 
 import { Page } from './components/Page'
-import { CardInformation } from './components/CardInformation'
 import { InfoProvider } from './context/InfoContext'
+import { InfoRoutes } from './components/InfoRoutes'
 
 const path = "https://raw.githubusercontent.com/xsolla/xsolla-frontend-school-2020/master/events.json";
 
@@ -25,9 +25,7 @@ const App = () => {
           <Route exact path="/">
             <Page/>
           </Route>
-          <Route exact path="/card_info/:id">
-            <CardInformation/>
-          </Route>
+          <InfoRoutes/>
         </Switch>
       </HashRouter>
     </InfoProvider>
