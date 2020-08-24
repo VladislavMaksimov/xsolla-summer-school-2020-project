@@ -1,37 +1,40 @@
-import React from 'react'
-import { NavLink } from "react-router-dom"
-import { InfoContext } from "../context/InfoContext"
-import { info_page, info_card, info_card_img, info_card_text } from "../scss/style.scss"
+import React, { useEffect, useState } from "react";
+import { NavLink, useParams } from "react-router-dom";
+import {
+  info_page,
+  info_card,
+  info_card_img,
+  info_card_text,
+} from "../scss/style.scss";
 
-export const CardInformation = () => {
-    return (
-        <InfoContext.Consumer>
-            {({card_info, setInfo}) =>
-                (
-                <div className = { info_page }>
-                    <div className = { info_card }>
+export const CardInformation = ({ cards }) => {
+  const { id } = useParams();
 
-                        <div className = { info_card_img }>
-                            <img src = { card_info.image }/>
-                        </div>
+  const [card, setCard] = useState({});
 
-                        <h3> { card_info.name } </h3>
+  useEffect(() => {
+    if (cards.length > 0) {
+      setCard(cards.filter((item) => item.id === id)[0]);
+    }
+  }, [cards]);
 
-                        <br/>
-
-                        <span className = { info_card_text }>
-                            Date: { card_info.date } <br/> <br/>
-                            City: { card_info.city } <br/> <br/>
-                            Genre: { card_info.genre }
-                        </span>
-
-                        <NavLink exact to="/">
-                            Назад
-                        </NavLink>
-
-                    </div>
-                </div>
-            )}
-        </InfoContext.Consumer>
-    )
-}
+  return (
+    <div className={info_page}>
+      <div className={info_card}>
+        <div className={info_card_img}>
+          <img src={card.image} />
+        </div>
+        <h3> {card.name} </h3>
+        <br />
+        <span className={info_card_text}>
+          Date: {card.date} <br /> <br />
+          City: {card.city} <br /> <br />
+          Genre: {card.genre}
+        </span>
+        <NavLink exact to="/">
+          Назад
+        </NavLink>
+      </div>
+    </div>
+  );
+};

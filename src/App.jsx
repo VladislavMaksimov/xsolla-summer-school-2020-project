@@ -1,28 +1,32 @@
-import { hot } from 'react-hot-loader/root'
-import React, { useState } from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { hot } from "react-hot-loader/root";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { Page } from './components/Page'
-import { CardInformation } from './components/CardInformation'
-import { InfoContext } from './context/InfoContext'
+import { Page } from "./components/Page";
+import { CardInformation } from "./components/CardInformation";
+import { path } from "./constants";
 
 const App = () => {
-  const [card_info, setInfo] = useState({});
+  const [cards, setCards] = useState({});
+
+  useEffect(() => {
+    fetch(path)
+      .then((response) => response.json())
+      .then((response) => setCards(response));
+  }, [path]);
 
   return (
-    <InfoContext.Provider value = { {card_info, setInfo} }>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            <Page/>
-          </Route>
-          <Route exact path="/card_info">
-            <CardInformation/>
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </InfoContext.Provider>
-  )
-}
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <Page cards={cards} />
+        </Route>
+        <Route path="/card_info/:id">
+          <CardInformation cards={cards} />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
-export default hot(App)
+export default hot(App);
