@@ -1,177 +1,212 @@
-html, body, ul, ol, li, p,
-h1, h2, h3, h4, h5, h6,
-form, fieldset, a, img {
-	margin: 0;
-	padding: 0;
-	border: 0;
+/*** Дефолтные значение ***/
+/* Фон */
+/* Шрифт */
+/* Тень */
+* {
+  margin: 0;
+  padding: 0;
 }
-
+div,
+body,
+p {
+  box-sizing: border-box;
+}
 body {
-    font-size: 100.01%;
-    font-family: Arial, Helvetica, sans-serif; 
-    color: black;
-    background-color: rgb(223, 239, 242);
+  font-size: 100.01%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  background-color: #dfeff2;
 }
-
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
-
-@media only screen and (max-width: 200px) {
-    .cards {
-        grid-template-columns: auto;
-    }
-}
-
+/* Миксин для центрирования отступами */
+/* Миксин для центрирования гридом */
 /* блок, в котором находятся все остальные элементы */
 .page {
-    width: 45%;
-    padding: 2%;
-    background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    border-radius: 0.5vh;
-    box-shadow: 0 0 10px grey;
+  width: 45%;
+  padding: 2%;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border-radius: 0.5vh;
+  box-shadow: 0 0 3vh grey;
 }
-
-/* выбор города/месяца */
-.select {
-    margin-left: 1%;
-    margin-right: 1%;
-    padding-top: 0.3%;
-    padding-bottom: 0.3%;
-    padding-left: 0.1%;
-    border-radius: 5px;
-    font-size: 1em;
-    width: 10vw;
-}
-
 /* блок фильтров */
 .filters {
-    margin-top: 20px;
-    font-size: 0.8em;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-top: 3vh;
+  font-size: 1.2em;
+  /* выбор города/месяца */
 }
-
+.filters-select {
+  margin-left: 1%;
+  margin-right: 1%;
+  padding-top: 0.3%;
+  padding-bottom: 0.3%;
+  padding-left: 0.1%;
+  border-radius: 0.5vh;
+  font-size: 1em;
+  width: 9vw;
+  background-color: white;
+}
 /* грид с карточками */
 .cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 1fr;
-    width: 100%;
-    margin-top: 3%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  width: 100%;
+  margin-top: 3%;
 }
-
-/* закладка */
-.white-bookmark {
-    color: white;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-top: 8%;
-    margin-right: 8%;
-    font-size: 2.4vh;
+/* карточка */
+.card {
+  background-size: cover;
+  border-radius: 0.7vh;
+  box-shadow: 0 0 3vh grey;
+  position: relative;
+  /* виды карточек */
+  /* закладка */
+  /* текст в карточке */
 }
-
-/* карточки */
 .card-top-left {
-    background-size: cover;
-    margin-right: 3%;
-    height: 30vh;
-    border-radius: 0.7vh;
-    box-shadow: 0 0 10px grey;
-    position: relative;
+  margin-right: 3%;
+  height: 15vw;
 }
-
 .card-top-right {
-    background-size: cover;
-    margin-left: 3%;
-    border-radius: 0.7vh;
-    box-shadow: 0 0 10px grey;
-    position: relative;
+  margin-left: 3%;
 }
-
 .card-left {
-    background-size: cover;
-    margin-right: 3%;
-    margin-top: 3%;
-    border-radius: 0.7vh;
-    box-shadow: 0 0 10px grey;
-    position: relative;
+  margin-right: 3%;
+  margin-top: 6%;
 }
-
 .card-right {
-    background-size: cover;
-    margin-left: 3%;
-    margin-top: 3%;
-    border-radius: 0.7vh;
-    box-shadow: 0 0 10px grey;
-    position: relative;
+  margin-left: 3%;
+  margin-top: 6%;
 }
-
-/* текст в карточке */
-.bottom-text {
-    position: absolute;
-    bottom: 0;
-    color: white;
-    margin-bottom: 8%;
-    margin-left: 8%;
-    font-size: 4vh;
+.card-white-bookmark {
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 8%;
+  margin-right: 8%;
+  font-size: 1.2vw;
 }
-
+.card-bottom-text {
+  position: absolute;
+  bottom: 0;
+  color: white;
+  margin-bottom: 8%;
+  margin-left: 8%;
+  font-size: 1.5vw;
+}
 /* блок дня мероприятия */
-.day-div {
-    position: relative;
-    border: solid thin;
-    border-color: white;
-    border-radius: 0.5vh;
-    height: 6vh;
-    width: 6vh;
-    color: white;
-    margin-top: 8%;
-    margin-left: 8%;
+.day {
+  position: relative;
+  border: solid thin;
+  border-color: white;
+  border-radius: 0.5vh;
+  height: 2.7vw;
+  width: 2.7vw;
+  color: white;
+  top: 8%;
+  left: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* блок дня при наведении мыши */
+  /* день мероприятия */
 }
-
-/* блок дня при наведении мыши */
-.day-div:hover {
-    background-color: rgba(172, 174, 176, 0.7);
+.day:hover {
+  background-color: rgba(172, 174, 176, 0.7);
 }
-
-/* день мероприятия */
 .day-text {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    margin-right: -50%;
-    font-size: 3.7vh;
-    cursor: default;
+  position: absolute;
+  font-size: 1.9vw;
+  cursor: default;
 }
-
 /* Кнопка "Показать ещё" */
 .more-cards {
-    position: relative;
-    width: 30%;
-    height: 5vh;
-    margin-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 30%;
+  height: 2.7vw;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1.2vh;
+  cursor: pointer;
+  background-color: #7a1775;
+  /* Текст кнопки "Показать ещё" */
+}
+.more-cards-text {
+  font-size: 1.4vw;
+  color: white;
+}
+/* Мобильная версия */
+@media only screen and (max-width: 1000px) {
+  /* белое поле расширяется */
+  .page {
+    width: 90%;
+  }
+  /* Шрифт в фильтрах увеличивается, а элементы встают в одну колонку */
+  .filters {
+    grid-template-columns: auto;
+    grid-auto-rows: 1fr;
+    /* селекты занимают всю ширину белого поля */
+  }
+  .filters-select {
     margin-left: auto;
     margin-right: auto;
-    border: solid 0.5vh;
-    border-radius: 1.2vh;
-    cursor: pointer;
-    background-color: rgb(252, 164, 240);
-    border-color: rgb(240, 79, 218);
-    box-shadow: 0 0 2vh darkblue;
-}
-
-/* Текст кнопки "Показать ещё" */
-.more-cards-text {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    margin-right: -50%;
+    margin-bottom: 3%;
+    margin-top: none;
+    width: 100%;
+  }
+  /* карточки встают в одну колонку */
+  .cards {
+    grid-template-columns: auto;
+  }
+  /* изменяется положение и размер каждой карточки; высота теперь зависит от высоты экрана */
+  .card {
+    width: 100%;
+    height: 40vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: none;
+    /* меняются размеры элементов в каждой карточке и их отступы от краёв */
+  }
+  .card-white-bookmark {
+    font-size: 2.4vh;
+    margin-top: 4%;
+    margin-right: 4%;
+  }
+  .card-bottom-text {
+    font-size: 4vh;
+    margin-bottom: 4%;
+    margin-left: 4%;
+  }
+  .day {
+    height: 6vh;
+    width: 6vh;
+    top: 4%;
+    left: 4%;
+  }
+  .day-text {
+    font-size: 3.7vh;
+  }
+  /* кнопка "Показать ещё" занимает больше места */
+  .more-cards {
+    width: 50%;
+    height: 5vh;
+    /* текст карточки теперь зависит от высоты экрана */
+  }
+  .more-cards-text {
     font-size: 3vh;
-    color: darkblue;
+  }
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xsolla test 4</title>
+    <link rel="stylesheet" href="style.css" >
+    <script src="https://kit.fontawesome.com/cddf327f2f.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body onload="load()">
+    <div class="page">
+        <div>
+            <h2> Event Listing </h2>
+        </div>
+
+        <!-- Фильтры -->
+        <div class="filters">
+            <div> 
+                City:
+                <select class="filters-select" id="city" onchange="filter()"> 
+                    <option>
+                        All
+                    </option>
+                </select>
+            </div>
+
+            <div>
+                Month:  
+                <select class="filters-select" id="month" onchange="filter()"> 
+                    <option>
+                        All
+                    </option>
+                </select>
+            </div>
+
+            <div>
+                Day:
+                <select class="filters-select" id="day" onchange="filter()"> 
+                    <option>
+                        All
+                    </option>
+                </select>
+            </div>
+        </div>
+        <!-- /Фильтры -->
+
+        <!-- Карточки -->
+        <div class="cards" id="field"></div>  
+        <!-- /Карточки --> 
+        
+        <!-- "Показать ещё" -->
+        <div class="more-cards" onclick="getFourCards()">
+            <p class="more-cards-text"> Показать ещё </p>
+        </div>
+        <!-- /"Показать ещё" -->
+    </div>
+</body>
+
+</html>
