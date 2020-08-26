@@ -76,7 +76,7 @@ function getCard(concert) {
 
 // Добавление месяца в множество
 function getMonths(months, date) {
-    let month = parseInt(date.split('.')[1]);
+    let month = new Date(date).getMonth() + 1;
 
     switch (month) {
         case 1: return months.set("January", month);
@@ -138,12 +138,12 @@ function getFourCards() {
 }
 
 // Инициализация страницы
-function initPage() {
-    if (this.status == 200) {
+function initPage(response) {
+    /*if (this.status == 200) {
         let file = new File([this.response], 'temp');
         let fileReader = new FileReader();
-        fileReader.addEventListener('load', function(){
-            info = JSON.parse(fileReader.result);
+        fileReader.addEventListener('load', function(){*/
+            info = response.data; //JSON.parse(fileReader.result);
 
             let cities = new Set();
             let days = new Set();
@@ -169,9 +169,9 @@ function initPage() {
 
             // выводим первые 4 карточки
             getFourCards();
-        });
-        fileReader.readAsText(file);
-    } 
+        //});
+        //fileReader.readAsText(file);
+    //} 
 }
 
 // Фильтрация нужных событий
@@ -200,11 +200,14 @@ function doFilter() {
 
 // Получение json-объекта с помощью http-запроса
 function readJSON(path, func) {
-    let xhr = new XMLHttpRequest();
+    /*let xhr = new XMLHttpRequest();
     xhr.open('GET', path, true);
     xhr.responseType = 'blob';
     xhr.onload = func;
-    xhr.send();
+    xhr.send();*/
+
+    axios.get('http://localhost:3000/events')
+         .then(function (response) { console.log(response); func(response) });
 }
 
 // Скрипт при загрузке страницы
