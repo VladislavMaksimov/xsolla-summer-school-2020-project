@@ -33,7 +33,7 @@ button {
     margin-right: auto;
 }
 
-/* Миксин для центрирования гридом */
+/* Миксин для центрирования флексом */
 .center-flex() {
     display: flex;
     align-items: center;
@@ -166,7 +166,40 @@ button {
     }
 }
 
+// Форма для добавления карточек
+.new-card-form {
+    width: 60%;
+    height: auto;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    border-radius: 6px;
+    display: none;
 
+    .center-auto;
+    margin-top: 5%;
+    padding: 2%;
+
+    // Колонки с названиями и инпутами
+    .form-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-row-gap: 0.5vw;
+        margin-top: 5%;
+    }
+
+    /* Кнопка "Добавить карточку" */
+    .add-card {
+        .center-flex;
+        .center-auto;
+        width: 50%;
+        height: 2.7vw;
+        margin-top: 5%;
+        border-radius: 1.2vh;
+        border: 1px solid black;
+        background-color: white;
+        cursor: pointer;
+    }
+}
 
 /* Кнопка "Показать ещё" */
 .more-cards {
