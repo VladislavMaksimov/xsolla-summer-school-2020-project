@@ -26,7 +26,7 @@ function checkConcert(concert) {
 // Добавление карточки
 function getCard(concert) {
     let cards = document.getElementById("field");
-    let concert_day = concert.date.split('.')[0];
+    let concert_day = new Date(concert.date).getDay();
 
     // если концерт не проходит фильтры, возвращаем false
     if (!checkConcert(concert))
@@ -139,39 +139,32 @@ function getFourCards() {
 
 // Инициализация страницы
 function initPage(response) {
-    /*if (this.status == 200) {
-        let file = new File([this.response], 'temp');
-        let fileReader = new FileReader();
-        fileReader.addEventListener('load', function(){*/
-            info = response.data; //JSON.parse(fileReader.result);
+    info = response.data;
 
-            let cities = new Set();
-            let days = new Set();
+    let cities = new Set();
+    let days = new Set();
 
-            for (let i = 0; i < info.length; i++) {
-                // добавляем города в множество
-                cities.add(info[i].city);
-                // добавляем дни в множество
-                days.add(info[i].date.split('.')[0]);
-                // добавляем месяцы в словарь
-                months = getMonths(months, info[i].date);
-            }
+    for (let i = 0; i < info.length; i++) {
+        // добавляем города в множество
+        cities.add(info[i].city);
+        // добавляем дни в множество
+        days.add(new Date(info[i].date).getDay() + 1);
+        // добавляем месяцы в словарь
+        months = getMonths(months, info[i].date);
+    }
 
-            // добавляем названия городов в select
-            for (let city of Array.from(cities).sort())
-                document.getElementById("city").innerHTML += "<option>" + city + "</option>";  
-            // добавляем дни в select
-            for (let day of Array.from(days).sort())
-                document.getElementById("day").innerHTML += "<option>" + day + "</option>";  
-            // добавляем месяцы в select  
-            for (let [name, number] of months)
-                document.getElementById("month").innerHTML += "<option>" + name + "</option>"; 
+     // добавляем названия городов в select
+    for (let city of Array.from(cities).sort())
+        document.getElementById("city").innerHTML += "<option>" + city + "</option>";  
+    // добавляем дни в select
+    for (let day of Array.from(days).sort())
+        document.getElementById("day").innerHTML += "<option>" + day + "</option>";  
+    // добавляем месяцы в select  
+    for (let [name, number] of months)
+        document.getElementById("month").innerHTML += "<option>" + name + "</option>"; 
 
-            // выводим первые 4 карточки
-            getFourCards();
-        //});
-        //fileReader.readAsText(file);
-    //} 
+    // выводим первые 4 карточки
+    getFourCards();
 }
 
 // Фильтрация нужных событий
@@ -200,12 +193,6 @@ function doFilter() {
 
 // Получение json-объекта с помощью http-запроса
 function readJSON(path, func) {
-    /*let xhr = new XMLHttpRequest();
-    xhr.open('GET', path, true);
-    xhr.responseType = 'blob';
-    xhr.onload = func;
-    xhr.send();*/
-
     axios.get('http://localhost:3000/events')
          .then(function (response) { console.log(response); func(response) });
 }
