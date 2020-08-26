@@ -16,7 +16,7 @@
                 "date": faker.date.future(),
                 "city": faker.address.city(),
                 "genre": faker.lorem.word(),
-                "image": "https://picsum.photos/700/500"
+                "image": `https://picsum.photos/id/${i}/700/500`
             }));
 
             document.getElementById('data').value = JSON.stringify(events, null, '  ');
