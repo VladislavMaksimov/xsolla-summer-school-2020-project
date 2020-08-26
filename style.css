@@ -37,7 +37,8 @@ button {
 /* блок фильтров */
 .filters {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto;
+  width: 70%;
   margin-top: 3vh;
   font-size: 1.2em;
   /* выбор города/месяца */
@@ -68,7 +69,7 @@ button {
   box-shadow: 0 0 3vh grey;
   position: relative;
   /* виды карточек */
-  /* закладка */
+  /* удалить карточку */
   /* текст в карточке */
 }
 .card-top-left {
@@ -86,7 +87,8 @@ button {
   margin-left: 3%;
   margin-top: 6%;
 }
-.card-white-bookmark {
+.card-white-trash {
+  cursor: pointer;
   color: white;
   position: absolute;
   top: 0;
@@ -101,6 +103,7 @@ button {
   color: white;
   margin-bottom: 8%;
   margin-left: 8%;
+  margin-right: 8%;
   font-size: 1.5vw;
 }
 /* блок дня мероприятия */
@@ -142,6 +145,7 @@ button {
   border-radius: 1.2vh;
   cursor: pointer;
   background-color: #7a1775;
+  display: none;
   /* Текст кнопки "Показать ещё" */
 }
 .more-cards-text {
@@ -156,6 +160,7 @@ button {
   }
   /* Шрифт в фильтрах увеличивается, а элементы встают в одну колонку */
   .filters {
+    width: 100%;
     grid-template-columns: auto;
     grid-auto-rows: 1fr;
     /* селекты занимают всю ширину белого поля */
@@ -181,7 +186,7 @@ button {
     margin-bottom: none;
     /* меняются размеры элементов в каждой карточке и их отступы от краёв */
   }
-  .card-white-bookmark {
+  .card-white-trash {
     font-size: 2.4vh;
     margin-top: 4%;
     margin-right: 4%;

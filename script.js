@@ -3,21 +3,23 @@ let months = new Map();
 let info;
 let index = 0;
 
+// Удаление карточки
+function deleteCard(id) {
+    axios.delete(`http://localhost:3000/events/${id}`);
+    filter();
+}
+
 // Проверка, удовлетворяет ли концерт условиям фильтров
 function checkConcert(concert) {
     let city_filter = document.getElementById("city");
     let city = city_filter.options[city_filter.selectedIndex].text;
-    let day_filert = document.getElementById("day");
-    let day = day_filert.options[day_filert.selectedIndex].text;
     let month_filter = document.getElementById("month");
     let month = month_filter.options[month_filter.selectedIndex].text;
 
-    let concert_day = concert.date.split('.')[0];
     let concert_city = concert.city;  
-    let concert_month = parseInt(concert.date.split('.')[1]);
+    let concert_month = new Date(concert.date).getMonth() + 1;
 
-    if (city !== concert_city && city !== "All" || months.get(month) !== concert_month && month !== "All" || 
-        day !== concert_day && day !== "All")
+    if (city !== concert_city && city !== "All" || months.get(month) !== concert_month && month !== "All")
         return false;
     else
         return true;
@@ -26,7 +28,7 @@ function checkConcert(concert) {
 // Добавление карточки
 function getCard(concert) {
     let cards = document.getElementById("field");
-    let concert_day = new Date(concert.date).getDay();
+    let concert_day = new Date(concert.date).getDay() + 1;
 
     // если концерт не проходит фильтры, возвращаем false
     if (!checkConcert(concert))
@@ -34,6 +36,7 @@ function getCard(concert) {
 
     // создаём карточку
     let card = document.createElement("div");
+    card.id = concert.id;
     card.classList.add("card");
     let cards_count = cards.children.length;
     if (cards_count === 0)
@@ -45,7 +48,7 @@ function getCard(concert) {
             if (cards_count % 2 === 0)
                 card.classList.add("card-left");
             else
-            card.classList.add("card-right");
+                card.classList.add("card-right");
     card.style.backgroundImage = "url(" + concert.image +")";
     cards.appendChild(card);
 
@@ -67,9 +70,10 @@ function getCard(concert) {
     card.appendChild(bottom_text);
 
     // добавляем закладку на карточку
-    let bookmark = document.createElement("i");
-    bookmark.classList.add("far", "fa-bookmark", "card-white-bookmark");
-    card.appendChild(bookmark);
+    let trash = document.createElement("i");
+    trash.classList.add("fa", "fa-trash", "card-white-trash");
+    trash.addEventListener('click', deleteCard.bind(this, card.id));
+    card.appendChild(trash);
 
     return true;
 }
@@ -138,17 +142,13 @@ function getFourCards() {
 }
 
 // Инициализация страницы
-function initPage(response) {
-    info = response.data;
-
+function initPage(data) {
+    info = data;
     let cities = new Set();
-    let days = new Set();
 
     for (let i = 0; i < info.length; i++) {
         // добавляем города в множество
         cities.add(info[i].city);
-        // добавляем дни в множество
-        days.add(new Date(info[i].date).getDay() + 1);
         // добавляем месяцы в словарь
         months = getMonths(months, info[i].date);
     }
@@ -156,9 +156,6 @@ function initPage(response) {
      // добавляем названия городов в select
     for (let city of Array.from(cities).sort())
         document.getElementById("city").innerHTML += "<option>" + city + "</option>";  
-    // добавляем дни в select
-    for (let day of Array.from(days).sort())
-        document.getElementById("day").innerHTML += "<option>" + day + "</option>";  
     // добавляем месяцы в select  
     for (let [name, number] of months)
         document.getElementById("month").innerHTML += "<option>" + name + "</option>"; 
@@ -168,33 +165,26 @@ function initPage(response) {
 }
 
 // Фильтрация нужных событий
-function doFilter() {
-    if (this.status == 200) {
-        let file = new File([this.response], 'temp');
-        let fileReader = new FileReader();
-        fileReader.addEventListener('load', function(){
-            info = JSON.parse(fileReader.result);
-            index = 0;
-            let cards = document.getElementById("field");
+function doFilter(data) {
+    info = data;
+    index = 0;
+    let cards = document.getElementById("field");
 
-            // чистим грид с карточками
-            while (cards.firstChild) {
-                cards.removeChild(cards.firstChild);
-            }
+    // чистим грид с карточками
+    while (cards.firstChild) {
+        cards.removeChild(cards.firstChild);
+    }
 
-            console.log(info);
-
-            // добавляем нужные карточки
-            getFourCards();
-        });
-        fileReader.readAsText(file);
-    } 
+    // добавляем нужные карточки
+    getFourCards(); 
 }
 
 // Получение json-объекта с помощью http-запроса
 function readJSON(path, func) {
     axios.get('http://localhost:3000/events')
-         .then(function (response) { console.log(response); func(response) });
+         .then(function (response) {
+            console.log(response.data); func(response.data) 
+         });
 }
 
 // Скрипт при загрузке страницы
