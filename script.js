@@ -102,7 +102,7 @@ function getMonths(months, date) {
 function getFourCards() {
     let page = document.getElementsByClassName("page")[0];
     let more_button = document.getElementsByClassName("more-cards")[0];
-    const addButton = document.getElementsByClassName("add-card")[0];
+    const newCardForm = document.getElementsByClassName("new-card-form")[0];
     
     let i = index;
     let j = 0;
@@ -112,7 +112,7 @@ function getFourCards() {
         if (i >= info.length) {
             // если мы прошли список концертов до конца, убираем кнопку "Показать ещё"
             more_button.style.display = "none";
-            addButton.style.display = "flex";            
+            newCardForm.style.display = "flex";            
             return;
         }
         else {
@@ -137,11 +137,11 @@ function getFourCards() {
     if (areThereMoreCards(i)) {
         index = i;
         more_button.style.display = "flex";
-        addButton.style.display = "non";   
+        newCardForm.style.display = "none";   
     }
     else {
         more_button.style.display = "none";
-        addButton.style.display = "flex";   
+        newCardForm.style.display = "flex";   
     }
 }
 
