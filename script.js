@@ -200,3 +200,28 @@ function load() {
 function filter() {
     readJSON(path, doFilter);
 }
+
+function getId() {
+    return Math.max.apply(Math, info.map(function(card) { return card.id; }))
+}
+
+function postCard() {
+    const data = document.getElementsByClassName("postCardData");
+
+    const id = getId() + 1;
+    const name = data[0].value;
+    const date = data[1].value;
+    const city = data[2].value;
+    const genre = data[3].value;
+
+    const card = {
+        "id": id,
+        "name": name,
+        "date": date,
+        "city": city,
+        "genre": genre,
+        "image": `https://picsum.photos/id/${id}/700/500`
+    };
+
+    axios.post("http://localhost:3000/events/", card);
+}
