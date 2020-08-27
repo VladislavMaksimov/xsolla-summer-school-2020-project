@@ -3,12 +3,6 @@ let months = new Map();
 let info;
 let index = 0;
 
-// Удаление карточки
-function deleteCard(id) {
-    axios.delete(`http://localhost:3000/events/${id}`);
-    filter();
-}
-
 // Проверка, удовлетворяет ли концерт условиям фильтров
 function checkConcert(concert) {
     let city_filter = document.getElementById("city");
@@ -107,6 +101,8 @@ function getFourCards() {
     let i = index;
     let j = 0;
 
+    console.log(index)
+    console.log(info)
     // добавляем карточки
     while (j < 4) {
         if (i >= info.length) {
@@ -187,7 +183,8 @@ function doFilter(data) {
 function readJSON(path, func) {
     axios.get('http://localhost:3000/events')
          .then(function (response) {
-            console.log(response.data); func(response.data) 
+            console.log(response)
+            func(response.data) 
          });
 }
 
@@ -203,6 +200,30 @@ function filter() {
 
 function getId() {
     return Math.max.apply(Math, info.map(function(card) { return card.id; }))
+}
+
+function clear() {
+    months.clear();
+    index = 0;
+
+    const cards = document.getElementById("field");
+    // чистим грид с карточками
+    while (cards.firstChild) {
+        cards.removeChild(cards.firstChild);
+    }
+
+    const cityFilter = document.getElementById("city");
+    cityFilter.innerHTML = "<option>All</option>";
+
+    const monthsFilter = document.getElementById("month");
+    monthsFilter.innerHTML = "<option>All</option>";
+}
+
+// Удаление карточки
+function deleteCard(id) {
+    axios.delete(`http://localhost:3000/events/${id}`);
+    clear();
+    load();
 }
 
 function postCard() {
@@ -224,4 +245,7 @@ function postCard() {
     };
 
     axios.post("http://localhost:3000/events/", card);
+
+    clear();
+    load();
 }
