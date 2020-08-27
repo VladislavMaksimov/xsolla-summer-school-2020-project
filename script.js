@@ -221,9 +221,9 @@ function clear() {
 
 // Удаление карточки
 function deleteCard(id) {
-    axios.delete(`http://localhost:3000/events/${id}`);
-    clear();
-    load();
+    axios.delete(`http://localhost:3000/events/${id}`)
+         .then(clear())
+         .then(load())
 }
 
 function postCard() {
@@ -244,8 +244,7 @@ function postCard() {
         "image": `https://picsum.photos/id/${id}/700/500`
     };
 
-    axios.post("http://localhost:3000/events/", card);
-
-    clear();
-    load();
+    axios.post("http://localhost:3000/events/", card)
+         .then(clear())
+         .then(load);
 }
