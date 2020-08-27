@@ -196,10 +196,12 @@ function filter() {
     readJSON(path, doFilter);
 }
 
-function getId() {
+// Получение максимального айдишника из имеющихся
+function getMaxId() {
     return Math.max.apply(Math, info.map(function(card) { return card.id; }))
 }
 
+// Очистка страницы
 function clear() {
     months.clear();
     index = 0;
@@ -224,10 +226,11 @@ function deleteCard(id) {
          .then(load())
 }
 
+// Добавление карточки
 function postCard() {
     const data = document.getElementsByClassName("postCardData");
 
-    const id = getId() + 1;
+    const id = getMaxId() + 1;
     const name = data[0].value;
     const date = data[1].value;
     const city = data[2].value;
