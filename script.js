@@ -22,7 +22,7 @@ function checkConcert(concert) {
 // Добавление карточки
 function getCard(concert) {
     let cards = document.getElementById("field");
-    let concert_day = new Date(concert.date).getDay() + 1;
+    let concert_day = new Date(concert.date).getDate();
 
     // если концерт не проходит фильтры, возвращаем false
     if (!checkConcert(concert))
@@ -101,8 +101,6 @@ function getFourCards() {
     let i = index;
     let j = 0;
 
-    console.log(index)
-    console.log(info)
     // добавляем карточки
     while (j < 4) {
         if (i >= info.length) {
