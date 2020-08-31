@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { NavLink, useParams } from "react-router-dom";
+import {CardsContext} from "../context";
 import {
   info_page,
   info_card,
@@ -7,10 +8,11 @@ import {
   info_card_text,
 } from "../scss/style.scss";
 
-export const CardInformation = ({ cards }) => {
+export const CardInformation = () => {
   const { id } = useParams();
 
   const [card, setCard] = useState({});
+  const {cards} = useContext(CardsContext);
 
   useEffect(() => {
     if (cards.length > 0) {

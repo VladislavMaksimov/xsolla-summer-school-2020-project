@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Page } from "./components/Page";
 import { CardInformation } from "./components/CardInformation";
 import { path } from "./constants";
+import {CardsContext} from "./context";
 
 const App = () => {
   const [cards, setCards] = useState({});
@@ -16,16 +17,18 @@ const App = () => {
   }, [path]);
 
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <Page cards={cards} />
-        </Route>
-        <Route path="/card_info/:id">
-          <CardInformation cards={cards} />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+      <CardsContext.Provider value={{ cards, setCards }}>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/">
+              <Page />
+            </Route>
+            <Route path="/card_info/:id">
+              <CardInformation/>
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </CardsContext.Provider>
   );
 };
 
